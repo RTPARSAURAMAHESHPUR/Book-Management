@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Bookdemo": {
+    "Bookdemo-no--standalone": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/bookdemo",
+            "outputPath": "dist/bookdemo-no--standalone",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,7 +27,12 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -57,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Bookdemo:build:production"
+              "buildTarget": "Bookdemo-no--standalone:build:production"
             },
             "development": {
-              "buildTarget": "Bookdemo:build:development"
+              "buildTarget": "Bookdemo-no--standalone:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Bookdemo:build"
+            "buildTarget": "Bookdemo-no--standalone:build"
           }
         },
         "test": {
